@@ -95,13 +95,27 @@
 
 
 								{% for tmp in temp %}
-								marker = new Tmapv2.Marker({
-                                position : new Tmapv2.LatLng({{ tmp[0]}}, {{ tmp[1]}}),
-                                icon : "http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_{{loop.index}}.png",
-                                iconSize : new Tmapv2.Size(24, 38),
-                                map:map
-                                });
+									{% if loop.length < 10 %}
+									marker = new Tmapv2.Marker({
+									position : new Tmapv2.LatLng({{ tmp[0]}}, {{ tmp[1]}}),
+									icon : "http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_{{loop.index}}.png",
+									iconSize : new Tmapv2.Size(24, 38),
+									map:map
+									});
+									{% endif %}
+
+									{% if loop.length > 9 %}
+									marker = new Tmapv2.Marker({
+									position : new Tmapv2.LatLng({{ tmp[0]}}, {{ tmp[1]}}),
+									icon : "https://www.flaticon.com/svg/static/icons/svg/1604/1604727.svg",
+									iconSize : new Tmapv2.Size(24, 38),
+									map:map
+									});
+									{% endif %}
+
                                 {% endfor %}
+
+
 
 
 								
